@@ -1,0 +1,20 @@
+# Regra para detectar SYN Flood
+alert tcp any any -> $HOME_NET any (msg:"Possível SYN Flood"; flags:S; threshold: type both, track by_src, count 50, seconds 10; sid:1000001; rev:1;)
+
+# Regra para detectar UDP Flood
+alert udp any any -> $HOME_NET any (msg:"Possível UDP Flood"; threshold: type both, track by_src, count 100, seconds 10; sid:1000002; rev:1;)
+
+# Regra para detectar ICMP Flood
+alert icmp any any -> $HOME_NET any (msg:"Possível ICMP Flood"; threshold: type both, track by_src, count 50, seconds 10; sid:1000003; rev:1;)
+
+# Regra para detectar port scanning
+alert tcp any any -> $HOME_NET any (msg:"Possível Port Scan"; flags:S; threshold: type both, track by_src, count 50, seconds 10; sid:1000004; rev:1;)
+
+# Regra para detectar HTTP Flood
+alert tcp any any -> $HOME_NET 80 (msg:"Possível HTTP Flood"; flow:to_server,established; content:"GET"; depth:3; threshold: type both, track by_src, count 200, seconds 60; sid:1000005; rev:1;)
+
+# Regra para detectar TCP Connection Flood
+alert tcp any any -> $HOME_NET any (msg:"Possível TCP Connection Flood"; flags:S; threshold: type both, track by_src, count 100, seconds 10; sid:1000008; rev:1;)
+
+# Regra para detectar alta taxa de tráfego UDP
+alert udp any any -> $HOME_NET any (msg:"Possível High Bandwidth UDP Flood"; threshold: type both, track by_src, count 1000, seconds 60; sid:1000009; rev:1;)

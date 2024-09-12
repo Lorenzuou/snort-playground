@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  snort:
+    build:
+      context: ./snort_conf
+      dockerfile: Dockerfile
+    container_name: snort
+    volumes:
+      - ./snort/logs:/var/log/snort
+    ports:
+      - 8080:80
+    networks:
+          - net
+    # command: snort -A console -c /etc/snort/snort.conf -i eth0
+  attacker:
+    build:
+      context: ./attacker
+      dockerfile: Dockerfile
+    container_name: attacker
+    networks:
+      - net
+    stdin_open: true
+    tty: true
+
+networks:
+  net:
+    driver: bridge
