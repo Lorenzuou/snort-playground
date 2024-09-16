@@ -5,7 +5,7 @@ Este projeto fornece um ambiente Docker para simular um ataque DDoS e demonstrar
 ## Estrutura do Projeto
 
 ```
-snort-ddos-simulation/
+snort-playground/
 │
 ├── snort_conf/
 │   ├── Dockerfile
@@ -31,11 +31,11 @@ Todos os arquivos necessários já estão incluídos no repositório. Não é ne
 
 1. Clone este repositório:
    ```
-   git clone https://github.com/seu-usuario/snort-ddos-simulation.git
-   cd snort-ddos-simulation
+   git clone https://github.com/seu-usuario/snort-playground.git
+   cd snort-playground
    ```
 
-2. Crie a network snort-network
+2. Dentro da pasta snort-playground, crie a network snort-network
 
    ```
    docker network create snort-network
@@ -48,7 +48,7 @@ Todos os arquivos necessários já estão incluídos no repositório. Não é ne
    docker run --name snort --network snort-network -it snort-container
    ```
 
-4. Construa e execute o container do attacker: 
+4. Em um novo terminal, construa e execute o container do attacker: 
 
    ```
    cd attacker
@@ -58,9 +58,9 @@ Todos os arquivos necessários já estão incluídos no repositório. Não é ne
 
 ## Simulação do Ataque
 
-1. Acesse o container do atacante:
+1. Acesse o container do atacante (pule essa etapa caso já esteja dentro do container):
    ```
-   docker-compose exec attacker bash
+   docker compose exec attacker bash
    ```
 
 2. No container do atacante, execute o ataque SYN Flood:
@@ -83,26 +83,10 @@ Além do ataque SYN Flood básico, você pode simular outros tipos de ataques pa
    hping3 --icmp --flood snort
    ```
 
-3. **HTTP Flood Attack** (usando siege)
-   ```
-   siege -c 200 -t 10S http://snort
-   ```
-
-4. **Port Scanning** (usando nmap)
+3. **Port Scanning** (usando nmap)
    ```
    nmap -p- -T4 snort
    ```
-
-7. **TCP Connection Flood**
-   ```
-   while true; do nc snort 80; done
-   ```
-
-8. **High Bandwidth UDP Flood** (usando iperf3)
-   ```
-   iperf3 -c snort -u -b 1G
-   ```
-
 
 ## Monitoramento da Detecção
 
