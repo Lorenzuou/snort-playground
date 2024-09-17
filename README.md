@@ -2,6 +2,8 @@
 
 Este projeto fornece um ambiente Docker para simular um ataque DDoS e demonstrar a detecção usando Snort. O ambiente consiste em dois containers Docker: um para o Snort (detector) e outro para simular o atacante.
 
+O Snort é um sistema de detecção e prevenção de intrusões (IDS/IPS) de código aberto, amplamente utilizado para monitorar tráfego de rede em tempo real e detectar potenciais ameaças à segurança. Foi criado por Martin Roesch em 1998 e desde então tem sido uma ferramenta essencial para profissionais de segurança de rede.
+
 ## Estrutura do Projeto
 
 ```
@@ -99,4 +101,50 @@ Além do ataque SYN Flood básico, você pode simular outros tipos de ataques pa
 - **Configuração do Snort**: Ajuste `snort/snort.conf` para modificar a configuração do Snort.
 - **Atacante**: Se necessário, modifique `attacker/Dockerfile` para incluir ferramentas adicionais de simulação de ataque.
 
+
+## Instalação do Snort 
+
+Esses passos não devem ser replicados, eles são o passo a passo utilizado para criar os arquivos disponibilizados no repositório
+
+1. Instalando o Snort em um sistema Linux:
+   ```   
+   sudo apt install snort
+   ```
+
+2. Configurando o arquivo principal do Snort (/etc/snort/snort.conf):
+* Definindo a rede interna
+* Ativando os módulos necessários
+* Configurando as regras
+
+3. Instalando as ferramentas para emulação de ataques:
+
+* hping3: Uma ferramenta de linha de comando para gerar e analisar pacotes TCP/IP.
+   ```
+   sudo apt install hping3
+    ```
+
+* Low Orbit Ion Cannon (LOIC): Uma ferramenta de código aberto para testes de estresse em redes. 
+
+   https://sourceforge.net/projects/loic/
+
+   Importante notar de apenas usar em ambientes controlados e com permissão
+
+
+* Tshark: Analisador de protocolo de rede para capturar tráfego. 
+   ```
+   sudo apt install tshark
+   ```
+
+
+4. Filtros no Snort para detecção de ataques DDoS:
+   Foi criado um arquivo rules/ddos.rules com as regras para detectar diferentes tipos de ataques DDoS
+
+
+## Fontes utilizadas
+
+Para entender um pouco mais sobre o Snort: https://www.clubedolinux.com.br/implementando-ids-ips-com-snort-no-linux/
+
+Tutorial de como instalar e aplicar o Snort: https://hackertarget.com/snort-tutorial-practical-examples/
+
+Referência da documentação do Snort, especificamente de como as regras funcionam: https://docs.snort.org/start/rules
 
