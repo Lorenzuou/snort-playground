@@ -148,3 +148,6 @@ Tutorial de como instalar e aplicar o Snort: https://hackertarget.com/snort-tuto
 
 Referência da documentação do Snort, especificamente de como as regras funcionam: https://docs.snort.org/start/rules
 
+## Vídeo de Demonstração
+
+https://drive.google.com/file/d/1bE_e-FwP98rgalhj6C0QzHhVL_me9KO5/view?usp=sharing
