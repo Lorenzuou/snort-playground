@@ -4,6 +4,14 @@ Este projeto fornece um ambiente Docker para simular um ataque DDoS e demonstrar
 
 O Snort é um sistema de detecção e prevenção de intrusões (IDS/IPS) de código aberto, amplamente utilizado para monitorar tráfego de rede em tempo real e detectar potenciais ameaças à segurança. Foi criado por Martin Roesch em 1998 e desde então tem sido uma ferramenta essencial para profissionais de segurança de rede.
 
+## Grupo
+
+Amanda Brito Apolinário (2020100640)
+
+Lorenzo Miniguite Scaramussa (2020100706)
+
+Paula Um Porto de Azeredo Bremenkamp (2020100794)
+
 ## Estrutura do Projeto
 
 ```
